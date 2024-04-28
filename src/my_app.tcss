@@ -1,0 +1,170 @@
+/* The top level dialog (a Container) */
+AantalMensen {
+    align: center middle;
+}
+
+#start_screen {
+    height: 10;
+    margin: 1 10;
+    background: $panel;
+    color: $text;
+    border: tall $background;
+    padding: 1;
+}
+
+/* The button class */
+# Button {
+#     width: 1fr;
+# }
+
+/* Matches the question text */
+#start_screen .question {
+    text-style: bold;
+    height: 100%;
+    content-align: center top;
+    # dock: top;
+}
+
+/* Matches the button container */
+#start_screen .button_start {
+    width: 100%;
+    height: auto;
+    dock: bottom;
+}
+
+Footer {
+    height: 1;
+    dock: bottom;
+}
+
+#screen {
+    height: 100%;
+    margin: 4 8;
+    background: $panel;
+    color: $text;
+    border: tall $background;
+    padding: 1 2;
+}
+
+Switchscreen {
+    layout: horizontal;
+    background: $boost;
+    height: 5;
+    margin: 1;
+    min-width: 50;
+    padding: 1;
+    dock: bottom;
+}
+
+# Button {
+#     width: 16;
+# }
+
+#terug {
+    width: 16;
+    dock: left;
+}
+
+#volgende {
+    width: 16;
+    dock: right;
+}
+
+PeopleChoice {
+    layout: horizontal;
+    background: $boost;
+    height: 5;
+    margin: 1;
+    min-width: 50;
+    padding: 1;
+}
+
+.inputs{
+    width: 20;
+    dock: right;
+}
+
+.Labels{
+    text-style: bold;
+    height: 100%;
+    content-align: center middle;
+    dock: left;
+}
+
+Insurance {
+    layout: horizontal;
+    background: $boost;
+    min-height: 33;
+    margin: 1;
+    min-width: 50;
+    padding: 1;
+    layout: grid;
+    grid-size: 1 1;
+    # min-height: 12;
+}
+
+
+.switches {
+    height: auto;
+    width: auto;
+    dock: right;
+    content-align: right middle;
+
+}
+
+Switch {
+    height: auto;
+    width: auto;
+}
+
+.insurancegrid {
+    padding-left: 1;
+    padding-right: 1;
+    layout: grid;
+    grid-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 2fr;
+    grid-size: 9 1;
+    text-align: right;
+}
+
+.labelGrid{
+    text-style: bold;
+    height: 100%;
+    content-align: left middle;
+    dock: left;
+}
+
+.verzekering_titel{
+    text-style: bold;
+    content-align:center top;
+
+}
+
+PakketKeuze {
+    layout: horizontal;
+    background: $boost;
+    height: 5;
+    margin: 1;
+    min-width: 50;
+    padding: 1;
+}
+
+.pakket{
+    # dock: top
+
+}
+
+ListView {
+    width: 20;
+    height: auto; 
+    margin: 0 1;
+    dock: right;
+}
+
+Benodigdheden {
+    layout: horizontal;
+    background: $boost;
+    height: 5;
+    margin: 1;
+    min-width: 50;
+    padding: 1;
+}
