@@ -41,6 +41,7 @@ SAMENVATTING =[
     ("Muziekvergunning: ","Muziekvergunning: "),
     ("Keuring van de stellingen: ","Keuring van de stellingen: "),
     ("Aanpassing openbare orde: ","Aanpassing openbare orde: "),
+    ("witregel","_____________________________"),
     ("totale kosten","Totale kosten: "),
 ]
 
@@ -405,7 +406,7 @@ class Started(Screen):
         elif event.button.id == "volgende":
             if self.check_for_Null():
                 self.update_total_costs()
-                app.push_screen(Factuur())
+                self.app.push_screen(Factuur())
 
     def watch_dark(self, dark: bool) -> None:
         self.query("Button").set_appearance("error" if dark else "primary")
@@ -466,21 +467,28 @@ class Started(Screen):
 class Samenvatting(Static):
     def compose(self) -> ComposeResult:
         JSON_PATH = str(Path(__file__).with_suffix('.json'))
+        yield Static("Samenvatting Kosten: ", classes="verzekering_titel")
 
         try:
             # Open het JSON-bestand
             with open(JSON_PATH, 'r+') as file:
                 data = json.load(file)
                 for f,tekst in SAMENVATTING:
-                    for key,value in data.items():
-                        if f == key:
+                    if f == "witregel":
                             with Grid(classes="samenvattinggrid"):
-                                if key != "gasten":
-                                    formatted_value = f"€{value:,.2f}"
-                                else:
-                                    formatted_value = f"{value:.0f}"
                                 yield Static(tekst, classes = "samenvatting_key")
-                                yield Static(formatted_value, classes = "samenvatting_value")
+                                yield Static("__________", classes = "samenvatting_key")
+                    else:
+                        for key,value in data.items():
+                            if f == key:
+                                with Grid(classes="samenvattinggrid"):
+                                    if key != "gasten":
+                                        formatted_value = f"€{value:,.2f}"
+                                    else:
+                                        formatted_value = f"{value:.0f}"
+                                    yield Static(tekst, classes = "samenvatting_key")
+                                    yield Static(formatted_value, classes = "samenvatting_value")
+                                    # yield Static(formatted_value, classes = "samenvatting_value")
         except FileNotFoundError:
             print("Het JSON-bestand bestaat niet.")
         except json.JSONDecodeError:
@@ -522,6 +530,9 @@ class YEBU(App):
     def action_toggle_dark(self) -> None:
         self.dark = not self.dark
 
-if __name__ == "__main__":
+def main():
     app = YEBU()
     app.run()
+
+if __name__ == "__main__":
+    main()
